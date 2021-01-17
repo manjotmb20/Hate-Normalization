@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Practice AJAX</title>
+    <script type="text/javascript">
+      function do_ajax() {
+        var req = new XMLHttpRequest();
+        var result = document.getElementById('result');
+        var strength=document.getElementById('hate');
+        req.onreadystatechange = function()
+        {
+          if(this.readyState == 4 && this.status == 200) {
+            result.innerHTML = this.responseText.split("|")[2];
+            strength.innerHTML=this.responseText.split("|")[1];
+            if(strength.innerHTML=='HIGH'){
+              strength.style.backgroundColor='red'
+            }else if(strength.innerHTML=='MEDIUM'){
+              strength.style.backgroundColor='yellow'
+            }else{
+              strength.style.backgroundColor='green'
+            }
+          } else {
+            result.innerHTML = "処理中...";
+          }
+        }
+
+        req.open('POST', '/', true);
+        req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+        req.send("name=" + document.getElementById('name').value);
+      }
+    </script>
+  </head>
+  <body>
+    <form action="index" method="post">
+      <label>Name:<input type="text" id="name" value="" onkeyup="do_ajax();"/></label>
+
+      <!-- <button type="button" id="btn-post" on="do_ajax();">Click</button> -->
+      <label>Strength<div id="hate" style="width: fit-content"></div></label>
+      <div id="result"></div>
+     
+    </form>
+  </body>
+</html>

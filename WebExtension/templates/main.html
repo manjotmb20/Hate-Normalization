@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta charset="utf-8">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+  <link rel="icon" href="http://obj-cache.cloud.ruanbekker.com/favicon.ico">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <title>Home</title>
+</head>
+
+<body>
+    
+    <br/><br/>
+    <div id="output"></div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+        $(function() {
+          $('a#test').on('click', function(e) {
+            e.preventDefault()
+            $.getJSON('/background_process_test',
+                function(data) {
+              console.log(data)
+            });
+            return false;
+          });
+        });
+</script>
+
+
+<div class='container'>
+    <h3>Test</h3>
+        <form>
+            <a href=# id=test><button class='btn btn-default'>Test</button></a>
+        </form>
+
+</div>
+    <!-- <form action="">
+      <div class="input-group">
+        <input type="text" class="form-control input-lg" name="input" placeholder="Enter abstract or relevant details" onkeyup="submits()" autofocus>
+        <div class="input-group-btn">
+          
+        </div>
+      </div>
+    </form> -->
+</body>
+</html>
